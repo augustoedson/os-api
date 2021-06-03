@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 import com.edson.os.domain.Cliente;
 import com.edson.os.domain.OS;
 import com.edson.os.domain.Tecnico;
-import com.edson.os.domain.enuns.Prioridade;
-import com.edson.os.domain.enuns.Status;
 import com.edson.os.dtos.OSDTO;
 import com.edson.os.repositories.OSRepository;
 import com.edson.os.services.exceptions.ObjectNotFoundException;
@@ -60,8 +58,8 @@ public class OsService {
 		OS newObj = new OS();
 		newObj.setId(obj.getId());
 		newObj.setObservacoes(obj.getObservacoes());
-		newObj.setPrioridade(Prioridade.toEnum(obj.getPrioridade()));
-		newObj.setStatus(Status.toEnum(obj.getStatus()));
+		newObj.setPrioridade(obj.getPrioridade());
+		newObj.setStatus(obj.getStatus());
 		
 		Tecnico tec = tecnicoService.findById(obj.getTecnico());
 		Cliente cli = clienteService.findById(obj.getCliente());
